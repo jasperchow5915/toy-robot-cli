@@ -198,7 +198,7 @@ describe("#Turn command", () => {
     });
 });
 
-describe("Running through the examples given in the specification", () => {
+describe("#Running through the examples given in the specification", () => {
     let simulator: World;
 
     beforeEach(() => {

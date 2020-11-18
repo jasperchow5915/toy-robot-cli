@@ -26,9 +26,9 @@ const LevelsConfig : LevelConfig = {
     colors: {
         BEGIN: 'white',
         SUCCESS: 'green',
-        WARNING: 'orange',
+        WARNING: 'yellow',
         ERROR: 'red',
-        REPORT: 'white',
+        REPORT: 'magenta',
         END: 'white'
     }
 };

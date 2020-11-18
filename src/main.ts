@@ -21,7 +21,7 @@ const message = {
     move: "I have moved one square.",
     invalidMove: "You can't move me there!",
     turn: "I've turned 90 degrees to the ",
-    invalidTurn: "I can't turn, and otherwise will fall off the table",
+    invalidTurn: "I can't turn, and I'm not placed properly",
     exit: "Thanks for playing!"
 }
 
@@ -80,7 +80,6 @@ const mainMenu = async () => {
 }
 
 const processInput = async (answer: { command: string }) => {
-    //To-DO: change to switch with a default case
     if (answer.command === "PLACE") {
         await placeX();
     }
