@@ -25,14 +25,14 @@ export enum Directions {
 }
 
 export enum Rotation {
-    LEFT = 'left',
-    RIGHT = 'right'
+    LEFT = 'LEFT',
+    RIGHT = 'RIGHT'
 }
 
 export interface MapElement {
-    value: Directions
-    left: Directions
-    right: Directions
+    VALUE: Directions
+    LEFT: Directions
+    RIGHT: Directions
 }
 
 export type CompassMap = {
@@ -41,24 +41,24 @@ export type CompassMap = {
 
 export const CompassMap: CompassMap = {
     NORTH: {
-        value: Directions.NORTH,
-        left: Directions.WEST,
-        right: Directions.EAST
+        VALUE: Directions.NORTH,
+        LEFT: Directions.WEST,
+        RIGHT: Directions.EAST
     },
     EAST: {
-        value: Directions.EAST,
-        left: Directions.NORTH,
-        right: Directions.SOUTH
+        VALUE: Directions.EAST,
+        LEFT: Directions.NORTH,
+        RIGHT: Directions.SOUTH
     },
     SOUTH: {
-        value: Directions.SOUTH,
-        left: Directions.EAST,
-        right: Directions.WEST
+        VALUE: Directions.SOUTH,
+        LEFT: Directions.EAST,
+        RIGHT: Directions.WEST
     },
     WEST: {
-        value: Directions.WEST,
-        left: Directions.SOUTH,
-        right: Directions.NORTH
+        VALUE: Directions.WEST,
+        LEFT: Directions.SOUTH,
+        RIGHT: Directions.NORTH
     }
 }
 
