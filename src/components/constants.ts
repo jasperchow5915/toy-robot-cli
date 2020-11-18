@@ -3,11 +3,6 @@ export interface IPosition {
     y: number;
 }
 
-interface IRobotState {
-    currentPosition: IPosition | undefined;
-    currentDirection: Directions | undefined;
-}
-
 export interface IRobotOptions {
     position: IPosition;
     direction: Directions;

@@ -1,6 +1,6 @@
 import * as inquirer from "inquirer";
-import Separator from "inquirer/lib/objects/separator";
 import { Directions } from "./constants";
+import Separator from "inquirer/lib/objects/separator";
 
 const commands = ['PLACE', 'MOVE', 'LEFT', 'RIGHT', 'REPORT', new inquirer.Separator(), 'EXIT'];
 const directions = Object.values(Directions)

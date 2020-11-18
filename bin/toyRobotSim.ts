@@ -1,2 +1,2 @@
 #!/usr/bin/env ts-node
-require('../src/index')()
+require("../src/main")()
