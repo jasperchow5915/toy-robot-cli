@@ -1,7 +1,7 @@
 import winston from 'winston';
 import inquirer from 'inquirer';
 import World from './components/world';
-import { Directions, Rotation } from './components/constants';
+import { Directions, message, Rotation } from './components/constants';
 import { actionsList, selectX, selectY, selectDirection } from './components/commands';
 
 const logger: winston.Logger = require('./common/logger');
@@ -11,18 +11,6 @@ const world = new World();
 interface ICoordindate {
     x?: number,
     y?: number
-}
-
-const message = {
-    intro: "Welcome! My name is Charlie. I am a toy robot and next to me is a 5x5 table. To start the interation, please PLACE me on the table first. I can MOVE one square at a time, turn LEFT or RIGHT and REPORT my own location.",
-    invalidNum: "Please provide a valid number.",
-    invalidPlace: "You can't place me here!",
-    invalidReport: "There is nothing to report.",
-    move: "I have moved one square.",
-    invalidMove: "You can't move me there!",
-    turn: "I've turned 90 degrees to the ",
-    invalidTurn: "I can't turn, and I'm not placed properly",
-    exit: "Thanks for playing!"
 }
 
 let coordinates: ICoordindate = {};

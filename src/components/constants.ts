@@ -66,3 +66,19 @@ export enum Actions {
     Forward,
     Backward
 }
+
+export const message = {
+    intro: "Welcome! My name is Charlie. I am a toy robot and next to me is a 5x5 table. To start the interation, please PLACE me on the table first. I can MOVE one square at a time, turn LEFT or RIGHT and REPORT my own location.",
+    choice: "Choose the action you would like the Robot to take",
+    selectX: "Please provide the X coordinate for the robot",
+    selectY: "Please provide the Y coordinate for the robot",
+    selectDirection: "Please provide the direction for the robot",
+    invalidNum: "Please provide a valid number.",
+    invalidPlace: "You can't place me here!",
+    invalidReport: "There is nothing to report.",
+    move: "I have moved one square.",
+    invalidMove: "You can't move me there!",
+    turn: "I've turned 90 degrees to the ",
+    invalidTurn: "I can't turn. Please PLACE me on the table first.",
+    exit: "Thanks for playing!"
+}
