@@ -1,9 +1,8 @@
-import { Directions, IPosition, ICoordinates, IMove, Actions, Rotation, CompassMap } from "./constant";
+import { Directions, IPosition, ICoordinates, IMove, Actions, Rotation, CompassMap } from "./constants";
 
-
-export class ToyRobot {
-  private currentDirection: Directions
-  private currentPosition: IPosition
+export class Robot {
+  private currentDirection: Directions | undefined
+  private currentPosition: IPosition | undefined
   private isPlaced: boolean
 
   constructor() {
@@ -12,13 +11,13 @@ export class ToyRobot {
     this.isPlaced = false;
   }
 
-  public place = ({ x, y, direction }: ICoordinates) => {
+  private place = ({ x, y, direction }: ICoordinates) => {
     this.currentPosition = { x, y };
     this.currentDirection = direction;
     return true;
   }
 
-  public move = ({ axis, action }: IMove) => {
+  private move = ({ axis, action }: IMove) => {
     if (this.currentPosition) {
       if (action === Actions.Forward) {
         ++this.currentPosition[axis];
@@ -30,29 +29,23 @@ export class ToyRobot {
     }
   }
 
-  public turn = (turnDirection: Rotation) => {
+  private turn = (turnDirection: Rotation) => {
     if (!this.currentPosition || !this.currentDirection) {
       return false;
+    } else {
+      const resultDirection = CompassMap[this.currentDirection][turnDirection];
+      if (resultDirection) {
+        this.currentDirection = resultDirection;
+      }
+      return true;
     }
-
-    var resultDirection = CompassMap[this.currentDirection][turnDirection];
-
-    if (resultDirection) {
-      this.currentDirection = resultDirection;
-    }
-
-    return true;
   };
 
-  public report = () => {
-    if (!this.currentPosition || !this.currentDirection) {
-      return false;
+  private turnRight = () => this.turn(Rotation.RIGHT)
+  private turnLeft = () => this.turn(Rotation.LEFT)
+  private report = () => (!this.currentPosition || !this.currentDirection) ? false
+    : {
+      ...this.currentPosition,
+      direction: this.currentDirection
     }
-    else {
-      return {
-        ...this.currentPosition,
-        direction: this.currentDirection
-      }
-    }
-  }
 }
