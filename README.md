@@ -5,7 +5,9 @@ The application is a simulation of a toy robot moving on a square table top, of 
 
 To run this simulator:
 
-```yarn install && yarn start```
+```yarn install```
+then
+```yarn start```
 
 Follow the prompts in the console.
 
