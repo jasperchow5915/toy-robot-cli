@@ -1,6 +1,6 @@
+import Board from "./board";
+import Robot from "./robot";
 import { Rotation, Directions, Actions, IMove, ICoordinates } from "./constants";
-import { Board } from "./Board";
-import { Robot } from "./robot";
 
 interface World {
     table: Board;
@@ -14,7 +14,7 @@ class World {
     }
 
     public execute(subject: any, command: string, params?: any) {
-        return subject[command](params);
+        return subject[command] && subject[command](params);
     }
 
     private executeOnRobot(command: string, params?: ICoordinates | IMove) {

@@ -1,6 +1,20 @@
 import { addColors, createLogger, format, transports } from 'winston';
 
-const myCustomLevels = {
+export enum Level {
+    BEGIN = 'BEGIN', 
+    SUCCESS = 'SUCCESS',
+    WARNING = 'WARNING',
+    ERROR = 'ERROR',
+    REPORT = 'REPORT',
+    END = 'END'
+}
+
+type LevelConfig = {
+    levels: { [key in Level]: number },
+    colors: { [key in Level]: string }
+}
+
+const LevelsConfig : LevelConfig = {
     levels: {
         BEGIN: 0,
         SUCCESS: 1,
@@ -12,16 +26,16 @@ const myCustomLevels = {
     colors: {
         BEGIN: 'white',
         SUCCESS: 'green',
-        WARNING: 'yellow',
+        WARNING: 'orange',
         ERROR: 'red',
         REPORT: 'white',
-        END: 'White'
+        END: 'white'
     }
 };
 
 const logger = createLogger({
     level: 'BEGIN',
-    levels: myCustomLevels.levels,
+    levels: LevelsConfig.levels,
     format: format.json(),
     transports: [
         new transports.Console({
@@ -34,6 +48,6 @@ const logger = createLogger({
     ]
 });
 
-addColors(myCustomLevels.colors);
+addColors(LevelsConfig.colors);
 
 module.exports = logger;

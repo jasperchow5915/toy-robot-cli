@@ -1,9 +1,10 @@
+import winston from 'winston';
 import inquirer from 'inquirer';
-import { actionsList, selectX, selectY, selectDirection } from './commands';
-import { Directions, Rotation } from './constants';
-import World from './world';
+import World from './components/world';
+import { Directions, Rotation } from './components/constants';
+import { actionsList, selectX, selectY, selectDirection } from './components/commands';
 
-const logger = require('./common/logger');
+const logger: winston.Logger = require('./common/logger');
 
 const world = new World();
 
@@ -13,7 +14,7 @@ interface ICoordindate {
 }
 
 const message = {
-    intro: "Welcome! My name is Charlie. I am a toy robot and next to me is a 5x5 table. I can MOVE one square at a time, turn LEFT or RIGHT and REPORT my own location. If you want to interact with me, please make sure to PLACE me on the table first.",
+    intro: "Welcome! My name is Charlie. I am a toy robot and next to me is a 5x5 table. To start the interation, please PLACE me on the table first. I can MOVE one square at a time, turn LEFT or RIGHT and REPORT my own location.",
     invalidNum: "Please provide a valid number.",
     invalidPlace: "You can't place me here!",
     invalidReport: "There is nothing to report.",
@@ -79,6 +80,7 @@ const mainMenu = async () => {
 }
 
 const processInput = async (answer: { command: string }) => {
+    //To-DO: change to switch with a default case
     if (answer.command === "PLACE") {
         await placeX();
     }
@@ -123,7 +125,7 @@ const placeX = async () => {
         })
 }
 
-async function placeY() {
+const placeY = async () => {
     await inquirer
         .prompt(selectY)
         .then((answer: { y: any }) => {
@@ -137,7 +139,7 @@ async function placeY() {
         })
 }
 
-async function placeDirection() {
+const placeDirection = async () => {
     await inquirer
         .prompt(selectDirection)
         .then((answer: { direction: Directions }) => {
@@ -147,7 +149,7 @@ async function placeDirection() {
         })
 }
 
-async function move() {
+const move = async () => {
     const canMove = world.execute(world, 'moveCommand');
     if (canMove) {
         logger.log({ level: 'SUCCESS', message: message.move });
@@ -157,20 +159,20 @@ async function move() {
     mainMenu();
 }
 
-async function left() {
+const left = async () => {
     const didTurnLeft = world.execute(world, 'turnCommand', Rotation.LEFT);
     if (didTurnLeft) {
-        logger.log({ level: 'SUCCESS', message: message.turn + " left." });
+        logger.log({ level: 'SUCCESS', message: message.turn + "left." });
     } else {
         logger.log({ level: 'ERROR', message: message.invalidTurn });
     }
     mainMenu();
 }
 
-async function right() {
+const right = async () => {
     const didTurnRight = world.execute(world, 'turnCommand', Rotation.RIGHT);
     if (didTurnRight) {
-        logger.log({ level: 'SUCCESS', message: message.turn + " right." });
+        logger.log({ level: 'SUCCESS', message: message.turn + "right." });
     } else {
         logger.log({ level: 'ERROR', message: message.invalidTurn });
     }
