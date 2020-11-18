@@ -16,7 +16,7 @@ interface ICoordindate {
 let coordinates: ICoordindate = {};
 
 const validateXCoordinate = (input: any) => {
-    const xcoord = +input
+    const xcoord = parseInt(input, 10)
     if (isNaN(xcoord)) {
         return message.invalidNum
     }
@@ -25,7 +25,7 @@ const validateXCoordinate = (input: any) => {
 }
 
 const validateYCoordinate = (input: any) => {
-    const ycoord = +input;
+    const ycoord = parseInt(input, 10);
     if (isNaN(ycoord)) {
         return message.invalidNum
     }
