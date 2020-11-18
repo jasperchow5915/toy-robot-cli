@@ -1,7 +1,7 @@
 import Robot from "../src/components/robot";
 import { Directions, Actions } from "../src/components/constants";
 
-describe("Start Up", () => {
+describe("#Start Up", () => {
     test("A new toy robot should be initialised", () => {
         expect(new Robot()).not.toBeNull();
     });
@@ -20,7 +20,7 @@ describe("#Placing a toy robot", () => {
     });
 });
 
-describe("Moving a toy robot", () => {
+describe("#Moving a toy robot", () => {
     let bot: Robot;
 
     beforeEach(() => {
@@ -125,7 +125,7 @@ describe("#TurnLeft", () => {
     });
 });
 
-describe("Turning a toy robot right", () => {
+describe("#Turning right", () => {
     let bot: Robot;
 
     beforeEach(() => {
@@ -174,7 +174,7 @@ describe("Turning a toy robot right", () => {
 
 });
 
-describe("Reporting location of toy robot", () => {
+describe("#Reporting location of toy robot", () => {
     let bot: Robot;
 
     beforeEach(() => {
@@ -206,7 +206,7 @@ describe("Reporting location of toy robot", () => {
     });
 });
 
-describe("Running through the example input on the specification", () => {
+describe("#Running through the example input on the specification", () => {
     let bot: Robot;
 
     beforeEach(() => {
